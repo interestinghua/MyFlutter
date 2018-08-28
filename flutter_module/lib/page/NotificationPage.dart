@@ -11,8 +11,7 @@ class NotificationPage extends StatefulWidget {
 }
 
 class NotificationPageState extends State<NotificationPage> {
-  static const EventChannel eventChannel =
-      EventChannel('sample.flutter.io/push_notification');
+  static const EventChannel eventChannel = EventChannel('sample.flutter.io/push_notification');
 
   String _name = 'unknown';
 

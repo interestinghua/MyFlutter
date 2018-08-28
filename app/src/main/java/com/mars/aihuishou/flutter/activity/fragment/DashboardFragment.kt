@@ -27,6 +27,7 @@ class DashboardFragment : FlutterFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        //native push data to flutter
         EventChannel(view as FlutterView, PUSH_CHANNEL).setStreamHandler(object : EventChannel.StreamHandler {
             override fun onListen(p0: Any?, p1: EventChannel.EventSink?) {
                 p1?.success("DashboardFragment")

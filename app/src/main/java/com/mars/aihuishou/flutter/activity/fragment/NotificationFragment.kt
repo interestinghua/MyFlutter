@@ -31,6 +31,7 @@ class NotificationFragment : FlutterFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        //native push data to flutter
         EventChannel(view as FlutterView, PUSH_CHANNEL).setStreamHandler(object : EventChannel.StreamHandler {
             override fun onListen(p0: Any?, events: EventChannel.EventSink?) {
                 events?.success("NotificationFragment")

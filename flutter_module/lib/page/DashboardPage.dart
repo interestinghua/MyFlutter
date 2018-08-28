@@ -11,8 +11,7 @@ class DashboardPage extends StatefulWidget {
 }
 
 class DashboardPageState extends State<DashboardPage> {
-  static const EventChannel eventChannel =
-      EventChannel('sample.flutter.io/push_dashboard');
+  static const EventChannel eventChannel = EventChannel('sample.flutter.io/push_dashboard');
 
   String _name = 'unknown';
 
