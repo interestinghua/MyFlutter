@@ -6,7 +6,7 @@ import io.reactivex.Observable;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
 
-public interface DataApi {
+public interface HomeDataApi {
 
     @GET("/news/list")
     Observable<SampleData> getFirstHomeData(@Query("pageIndex") Integer pageIndex, @Query("pageSize") Integer pageSize);
