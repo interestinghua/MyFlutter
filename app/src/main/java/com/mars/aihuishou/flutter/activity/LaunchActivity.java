@@ -1,4 +1,4 @@
-package com.mars.aihuishou.myflutter;
+package com.mars.aihuishou.flutter.activity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

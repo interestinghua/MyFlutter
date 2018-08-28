@@ -15,5 +15,9 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+
+  assets:
+      - images/img_load_fail.png
+
   module:
     androidPackage: com.example.fluttermodule
