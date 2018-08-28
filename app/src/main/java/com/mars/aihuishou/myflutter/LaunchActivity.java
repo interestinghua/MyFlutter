@@ -15,7 +15,7 @@ public class LaunchActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        FlutterView flutterView = Flutter.createView(this, getLifecycle(), "route1");
+        FlutterView flutterView = Flutter.createView(this, getLifecycle(), "app/notification");
         FrameLayout.LayoutParams layout = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         addContentView(flutterView, layout);
 
