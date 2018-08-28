@@ -9,7 +9,8 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.mars.aihuishou.myflutter.R;
+import com.mars.aihuishou.flutter.R;
+
 
 public class MainActivity extends AppCompatActivity {
 
