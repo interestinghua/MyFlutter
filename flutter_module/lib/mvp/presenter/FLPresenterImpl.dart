@@ -4,8 +4,8 @@ import 'package:flutter_module/mvp/model/FLRepository.dart';
 import 'package:flutter_module/mvp/view/FLView.dart';
 
 class FLPresenterImpl implements FLPresenter {
-  FLView _view;
-  FLRepository _repository;
+  FLView _view; //view
+  FLRepository _repository; //model
 
   FLPresenterImpl(this._view) {
     _view.setPresenter(this);

@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_module/page/HomePage.dart';
 import 'package:flutter_module/page/DashboardPage.dart';
 import 'package:flutter_module/page/NotificationPage.dart';
+import 'package:flutter_module/page/ListDemoPage.dart';
 
 //window.defaultRouteName
 void main() => runApp(new MyApp(window.defaultRouteName));
@@ -30,7 +31,8 @@ class MyApp extends StatelessWidget {
         break;
       case "app/notification":
         return new MaterialApp(
-          home: new NotificationPage(),
+//          home: new NotificationPage(),
+          home: new ListDemoPage(),
         );
         break;
       default:
