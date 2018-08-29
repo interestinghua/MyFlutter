@@ -1,5 +1,4 @@
 
-abstract class IPresenter<T> {
-    attachView(T);
-    detachView();
+abstract class IPresenter {
+  init();
 }

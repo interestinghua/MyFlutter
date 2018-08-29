@@ -1,4 +1,4 @@
 
-abstract class IView {
-//    setPresenter(T presenter);
+abstract class IView<T> {
+    setPresenter(T presenter);
 }

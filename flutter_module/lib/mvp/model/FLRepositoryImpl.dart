@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 import 'package:flutter_module/bean/FLModel.dart';
-import 'package:flutter_module/common/constant.dart';
+import 'package:flutter_module/common/Constant.dart';
 import 'package:flutter_module/mvp/model/FLRepository.dart';
 
 //分类数据: http://gank.io/api/data/数据类型/请求个数/第几页
@@ -14,39 +14,36 @@ import 'package:flutter_module/mvp/model/FLRepository.dart';
 //@return
 
 class FLRepositoryImpl implements FLRepository {
-
-	@override
-	Future<List<FLModel>> fetch(int pageNum, int pageSize) {
-		return _getData(pageNum, pageSize);
-	}
-
+  @override
+  Future<List<FLModel>> fetch(int pageNum, int pageSize) {
+    return _getData(pageNum, pageSize);
+  }
 }
 
 Future<List<FLModel>> _getData(int pageNum, int pageSize) async {
 
-	var httpClient = new HttpClient();
-	var url = Constant.baseUrl + '福利/$pageSize/$pageNum';
+  var httpClient = new HttpClient();
+  var url = Constant.baseUrl + '福利/$pageSize/$pageNum';
 
-	print(url);
+  print(url);
 
-	List flModels;
-	try {
-		var request = await httpClient.getUrl(Uri.parse(url));
-		var response = await request.close();
-		if (response.statusCode == HttpStatus.ok) {
-			var json = await response.transform(utf8.decoder).join();
-			flModels = jsonDecode(json)['results'];
-		} else {
-			//todo
-		}
-	} catch (exception) {
-		//todo
-	}
+  List flModels;
 
-	return flModels.map((model) {
-		return new FLModel.fromJson(model);
-	}).toList();
+  try {
+    var request = await httpClient.getUrl(Uri.parse(url));
+    var response = await request.close();
+    if (response.statusCode == HttpStatus.ok) {
+      var json = await response.transform(utf8.decoder).join();
+      flModels = jsonDecode(json)['results'];
+    } else {
+      //todo
+    }
+  } catch (exception) {
+    //todo
+  }
+
+  return flModels.map((model) {
+    return new FLModel.fromJson(model);
+  }).toList();
+
 }
-
-
-

@@ -1,11 +1,12 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_module/common/widget/progreess_dialog.dart';
+import 'package:flutter_module/common/widget/ProgressDialog.dart';
 import 'package:flutter_module/bean/FLModel.dart';
 import 'package:flutter_module/mvp/presenter/FLPresenter.dart';
 import 'package:flutter_module/mvp/presenter/FLPresenterImpl.dart';
-import 'package:flutter_module/common/widget/multi_touch_page.dart';
+import 'package:flutter_module/common/widget/MultiTouchPage.dart';
+import 'package:flutter_module/mvp/view/FLView.dart';
 
 class ListDemoPage extends StatefulWidget {
   ListDemoPage({Key key}) : super(key: key);
@@ -128,17 +129,17 @@ class _ListDemoPageState extends State<ListDemoPage> implements FLView {
 
   @override
   void onloadFLFail() {
-//		Scaffold.of(context).showSnackBar(new SnackBar(
-//			content: new Text("Sending Message"),
-//		));
+		Scaffold.of(context).showSnackBar(new SnackBar(
+			content: new Text("Sending Message"),
+		));
 
-    Fluttertoast.showToast(
-        msg: "This is Center Short Toast",
-        toastLength: Toast.LENGTH_SHORT,
-        gravity: ToastGravity.CENTER,
-        timeInSecForIos: 1,
-        bgcolor: "#e74c3c",
-        textcolor: '#ffffff');
+//    Fluttertoast.showToast(
+//        msg: "This is Center Short Toast",
+//        toastLength: Toast.LENGTH_SHORT,
+//        gravity: ToastGravity.CENTER,
+//        timeInSecForIos: 1,
+//        bgcolor: "#e74c3c",
+//        textcolor: '#ffffff');
   }
 
   @override
