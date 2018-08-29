@@ -2,6 +2,7 @@ package com.mars.aihuishou.flutter.activity.fragment
 
 import android.app.ProgressDialog
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import com.mars.aihuishou.flutter.mvp.model.HomeModel
@@ -10,6 +11,7 @@ import com.mars.aihuishou.flutter.mvp.view.HomeView
 import io.flutter.facade.FlutterFragment
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.view.FlutterView
+import java.util.logging.Logger
 
 class HomeFragment : FlutterFragment(), HomeView {
 
@@ -18,6 +20,7 @@ class HomeFragment : FlutterFragment(), HomeView {
     }
 
     private var dataJson = ""
+    private var pageIndex: Int = 1
 
     private val presenter by lazy {
         HomePresenter(HomeModel())
@@ -43,11 +46,16 @@ class HomeFragment : FlutterFragment(), HomeView {
         super.onViewCreated(view, savedInstanceState)
         presenter.attachView(this)
         dialog.show()
-        presenter.getMoviesData(1)
+        presenter.getMoviesData(pageIndex)
 
         MethodChannel(view as FlutterView, PULL_CHANNEL).setMethodCallHandler { methodCall, result ->
             run {
+                //返回值为最后一行 或者指定的return表达式
+                Log.d("flutter", "flutter 来拿数据了！！！")
                 if (methodCall.method.equals("getDataJson")) {
+//                    pageIndex++
+                    Log.d("flutter", "当前 pageIndex = $pageIndex")
+//                    presenter.getMoviesData(pageIndex)
                     val json = getDataJson()
                     result.success(json)
                 } else {

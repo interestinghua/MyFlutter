@@ -26,11 +26,13 @@ class HomePageState extends State<HomePage> {
 
   //flutter向原生获取数据
   Future<Null> _getDataJson() async {
-    String jsonStr;
+    print("我上拉刷新了");
+    String jsonStr = '';
     try {
       final String result = await methodChannel.invokeMethod('getDataJson');
       jsonStr = result;
-      print("jsonStr " + jsonStr);
+//            jsonStr += result;
+      print("jsonStr = " + jsonStr);
     } on PlatformException {
       jsonStr = '';
     }
@@ -43,7 +45,7 @@ class HomePageState extends State<HomePage> {
     Map<String, dynamic> map = json.decode(_json);
     var msg = map['msg'];
     var _listData = msg['news']['data'];
-    print(_listData.toString());
+//    print(_listData.toString());
     setState(() {
       listData = _listData;
     });
@@ -137,6 +139,7 @@ class HomePageState extends State<HomePage> {
         ),
       );
     }
+
     var row = new Row(
       children: <Widget>[
         new Padding(

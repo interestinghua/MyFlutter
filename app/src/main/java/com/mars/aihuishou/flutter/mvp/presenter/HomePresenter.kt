@@ -12,6 +12,7 @@ class HomePresenter(private val homeModel: HomeModel) : BasePresenter<HomeView>(
     fun getMoviesData(page: Int) {
         homeModel.getMovies(page)?.compose(DataTransformer.switchSchdulers())?.subscribe({ response ->
             rootView?.apply {
+                //作用域函数 可以调用view里的方法
                 getDataSuccess(Gson().toJson(response))
             }
         }, { error ->
