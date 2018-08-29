@@ -7,6 +7,7 @@ import 'package:flutter_module/mvp/presenter/FLPresenter.dart';
 import 'package:flutter_module/mvp/presenter/FLPresenterImpl.dart';
 import 'package:flutter_module/common/widget/MultiTouchPage.dart';
 import 'package:flutter_module/mvp/view/FLView.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class ListDemoPage extends StatefulWidget {
   ListDemoPage({Key key}) : super(key: key);
@@ -130,17 +131,19 @@ class _ListDemoPageState extends State<ListDemoPage> implements FLView {
 
   @override
   void onloadFLFail() {
-    Scaffold.of(context).showSnackBar(new SnackBar(
-      content: new Text("Sending Message"),
-    ));
 
-//    Fluttertoast.showToast(
-//        msg: "This is Center Short Toast",
-//        toastLength: Toast.LENGTH_SHORT,
-//        gravity: ToastGravity.CENTER,
-//        timeInSecForIos: 1,
-//        bgcolor: "#e74c3c",
-//        textcolor: '#ffffff');
+//    Scaffold.of(context).showSnackBar(new SnackBar(
+//      content: new Text("Sending Message"),
+//    ));
+
+    Fluttertoast.showToast(
+        msg: "This is Center Short Toast",
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.CENTER,
+        timeInSecForIos: 1,
+        bgcolor: "#e74c3c",
+        textcolor: '#ffffff');
+
   }
 
   @override
