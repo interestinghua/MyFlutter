@@ -11,7 +11,6 @@ class FLPresenterImpl implements FLPresenter {
     _view.setPresenter(this);
   }
 
-  @override
   void loadFLData(int pageNum, int pageSize) {
     assert(_view != null);
 

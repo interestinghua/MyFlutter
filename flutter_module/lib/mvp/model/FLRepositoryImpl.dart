@@ -45,5 +45,4 @@ Future<List<FLModel>> _getData(int pageNum, int pageSize) async {
   return flModels.map((model) {
     return new FLModel.fromJson(model);
   }).toList();
-
 }

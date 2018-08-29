@@ -15,12 +15,13 @@ class ListDemoPage extends StatefulWidget {
   _ListDemoPageState createState() {
     _ListDemoPageState view = new _ListDemoPageState();
     FLPresenter presenter = new FLPresenterImpl(view);
-    presenter.init();
+    presenter.init(); //初始化数据请求
     return view;
   }
 }
 
 class _ListDemoPageState extends State<ListDemoPage> implements FLView {
+
   final GlobalKey<RefreshIndicatorState> _refreshIndicatorKey =
       new GlobalKey<RefreshIndicatorState>();
 
@@ -129,9 +130,9 @@ class _ListDemoPageState extends State<ListDemoPage> implements FLView {
 
   @override
   void onloadFLFail() {
-		Scaffold.of(context).showSnackBar(new SnackBar(
-			content: new Text("Sending Message"),
-		));
+    Scaffold.of(context).showSnackBar(new SnackBar(
+      content: new Text("Sending Message"),
+    ));
 
 //    Fluttertoast.showToast(
 //        msg: "This is Center Short Toast",
