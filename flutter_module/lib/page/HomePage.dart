@@ -30,6 +30,7 @@ class HomePageState extends State<HomePage> {
     try {
       final String result = await methodChannel.invokeMethod('getDataJson');
       jsonStr = result;
+      print("jsonStr " + jsonStr);
     } on PlatformException {
       jsonStr = '';
     }

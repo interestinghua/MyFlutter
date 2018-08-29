@@ -13,7 +13,7 @@ object RetrofitHelper {
     private var okHttpClient: OkHttpClient? = null
 
     fun <K> createApi(cls: Class<K>?): K? {
-        return getRetrofit()?.create(cls)
+        return getRetrofit()?.create(cls!!)
     }
 
     private fun getRetrofit(): Retrofit? {
@@ -23,7 +23,7 @@ object RetrofitHelper {
                     okHttpBuilder = OkHttpClient.Builder()
                     okHttpClient = okHttpBuilder?.build()
                     retrofit = Retrofit.Builder().baseUrl(BASE_URL)
-                            .client(okHttpClient)
+                            .client(okHttpClient!!)
                             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                             .addConverterFactory(GsonConverterFactory.create())
                             .build()

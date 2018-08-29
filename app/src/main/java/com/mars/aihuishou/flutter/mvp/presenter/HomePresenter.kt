@@ -9,13 +9,13 @@ import com.mars.aihuishou.flutter.mvp.view.HomeView
 class HomePresenter(private val homeModel: HomeModel) : BasePresenter<HomeView>() {
 
     fun getMoviesData(page: Int) {
-        homeModel.getMovies(page)?.compose(DataTransformer.switchSchdulers())?.subscribe({ sampleData ->
+        homeModel.getMovies(page)?.compose(DataTransformer.switchSchdulers())?.subscribe({ response ->
             rootView?.apply {
-                getDataSuccess(Gson().toJson(sampleData))
+                getDataSuccess(Gson().toJson(response))
             }
-        }, { t ->
+        }, { error ->
             rootView?.apply {
-                getDataFail(t.message.toString())
+                getDataFail(error.message.toString())
             }
         })
     }

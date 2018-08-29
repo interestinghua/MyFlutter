@@ -71,13 +71,4 @@ class HomeFragment : FlutterFragment(), HomeView {
         Toast.makeText(context, failMsg, Toast.LENGTH_LONG).show()
     }
 
-//    override fun showDialog() {
-//        super.showDialog()
-//        dialog.show()
-//    }
-//
-//    override fun dismissDialog() {
-//        super.dismissDialog()
-//        dialog.dismiss()
-//    }
 }

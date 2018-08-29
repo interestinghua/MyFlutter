@@ -8,8 +8,6 @@ object DataTransformer {
     fun <T> switchSchdulers(): ObservableTransformer<T, T> {
         return ObservableTransformer { upstream ->
             upstream.subscribeOn(Schedulers.io())
-                    .unsubscribeOn(Schedulers.io())
-                    .doOnSubscribe { }
                     .observeOn(AndroidSchedulers.mainThread())
         }
     }

@@ -15,7 +15,7 @@ open class BasePresenter<V : IView> : IPresenter<V> {
     }
 
     override fun detachView() {
-        rootView = null;
+        rootView = null
         if (disposables.isDisposed) {
             disposables.clear()
         }
