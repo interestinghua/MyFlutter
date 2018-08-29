@@ -12,11 +12,11 @@ import kotlinx.android.synthetic.main.activity_demo.*
 
 class DemoActivity : AppCompatActivity() {
 
-    private val mTitles by lazy {
+    private val titles by lazy {
         arrayOf("Home", "Dashboard", "Notification")
     }
 
-    private val mFragments by lazy {
+    private val fragments by lazy {
         arrayListOf(
                 HomeFragment.newInstance("app/home"),
                 DashboardFragment.newInstance("app/dashboard"),
@@ -28,7 +28,7 @@ class DemoActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_demo)
 
-        val adapter = FragmentAdapter(supportFragmentManager, this, mTitles, mFragments)
+        val adapter = FragmentAdapter(supportFragmentManager, this, titles, fragments)
 
         viewPager.offscreenPageLimit = 3
         viewPager.adapter = adapter

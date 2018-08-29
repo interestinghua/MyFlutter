@@ -7,6 +7,7 @@ import io.reactivex.Observable
 
 class HomeModel {
 
+    //请求接口获取Model数据传入Presenter
     private val dataApi by lazy {
         RetrofitHelper.createApi(HomeDataApi::class.java)
     }
