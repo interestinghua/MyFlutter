@@ -12,13 +12,13 @@ class FLPresenterImpl implements FLPresenter {
   }
 
   void loadFLData(int pageNum, int pageSize) {
-    assert(_view != null);
+//    assert(_view != null);
 
     _repository.fetch(pageNum, pageSize).then((data) {
       _view.onloadFLSuccess(data);
     }).catchError((error) {
-      print(error);
-      _view.onloadFLFail();
+      print(error.toString());
+      _view.onloadFLFail(error.toString());
     });
   }
 

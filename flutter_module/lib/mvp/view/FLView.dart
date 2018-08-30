@@ -5,5 +5,5 @@ import 'package:flutter_module/mvp/presenter/FLPresenter.dart';
 abstract class FLView implements IView<FLPresenter> {
   void onloadFLSuccess(List<FLModel> list);
 
-  void onloadFLFail();
+  void onloadFLFail(String error);
 }

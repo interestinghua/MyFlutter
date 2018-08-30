@@ -8,7 +8,7 @@ import 'package:flutter_module/page/NotificationPage.dart';
 import 'package:flutter_module/page/ListDemoPage.dart';
 
 //window.defaultRouteName
-void main() => runApp(new MyApp(window.defaultRouteName));
+void main() => runApp(new MyApp("app/notification"));
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.

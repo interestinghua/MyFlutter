@@ -1,10 +1,11 @@
 import 'dart:async';
 import 'dart:convert';
+//import 'dart:mirrors';
 import 'dart:io';
 import 'package:flutter_module/bean/FLModel.dart';
 import 'package:flutter_module/common/Constant.dart';
 import 'package:flutter_module/mvp/model/FLRepository.dart';
-import 'package:flutter_module/util/Fetch.dart';
+import 'package:flutter_module/util/SingleDio.dart';
 import 'package:dio/dio.dart';
 
 //分类数据: http://gank.io/api/data/数据类型/请求个数/第几页
@@ -23,29 +24,34 @@ class FLRepositoryImpl implements FLRepository {
 }
 
 Future<List<FLModel>> _getData(int pageNum, int pageSize) async {
-  var httpClient = new HttpClient();
-  var url = Constant.baseUrl + '福利/$pageSize/$pageNum';
+  var url = Constant.baseUrl + 'Android/$pageSize/$pageNum';
+//  var url = "https://jsonplaceholder.typicode.com/photos";
+  SingleDio singleDio = new SingleDio();
+  Dio dioClient = singleDio.getDio;
 
-  Dio dioClient = await Fetch().dio;
+  var flModels;
 
-  print(url);
+  Response future = await dioClient.get(url);
 
-  List flModels;
-
-  try {
-    var request = await httpClient.getUrl(Uri.parse(url));
-    var response = await request.close();
-    if (response.statusCode == HttpStatus.ok) {
-      var json = await response.transform(utf8.decoder).join();
-      flModels = jsonDecode(json)['results'];
-    } else {
-      //todo
+  if (future.statusCode == HttpStatus.ok) {
+    bool isError = future.data['error'];
+    if (!isError) {
+      flModels = future.data['results'];
     }
-  } catch (exception) {
+  } else {
     //todo
   }
 
-  return flModels.map((model) {
-    return new FLModel.fromJson(model);
-  }).toList();
+  var response = flModels.toString().replaceAll('_', '').trim();
+
+  print("response = $response");
+
+  return parseFLModel(response);
+}
+
+List<FLModel> parseFLModel(String responseBody) {
+//  JsonCodec codec = new JsonCodec();
+  var jsonObj = json.decode(responseBody);
+  final parsed = jsonObj.cast<Map<String, dynamic>>();
+  return parsed.map<FLModel>((json) => FLModel.fromJson(json)).toList();
 }
