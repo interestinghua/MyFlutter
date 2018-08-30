@@ -5,6 +5,7 @@ import 'package:flutter_module/bean/FLModel.dart';
 import 'package:flutter_module/common/Constant.dart';
 import 'package:flutter_module/mvp/model/FLRepository.dart';
 import 'package:flutter_module/util/Fetch.dart';
+import 'package:dio/dio.dart';
 
 //分类数据: http://gank.io/api/data/数据类型/请求个数/第几页
 //数据类型： 福利 | Android | iOS | 休息视频 | 拓展资源 | 前端 | all
@@ -25,7 +26,7 @@ Future<List<FLModel>> _getData(int pageNum, int pageSize) async {
   var httpClient = new HttpClient();
   var url = Constant.baseUrl + '福利/$pageSize/$pageNum';
 
-  Fetch fetch = new Fetch();
+  Dio dioClient = await Fetch().dio;
 
   print(url);
 
